@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { Unstable3d } from '$lib';
+	import { VideoScroller } from '$lib';
 
 	import '../app.css';
 </script>
 
 <div style="height: 800px"></div>
 
-<Unstable3d
+<VideoScroller
 	animations={[
 		{
 			enter: {

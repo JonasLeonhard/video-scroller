@@ -69,7 +69,7 @@ const jt = typeof window < "u" ? window : typeof globalThis < "u" ? globalThis :
   // @ts-ignore Node typings have this
   global
 );
-function U(t, e) {
+function F(t, e) {
   t.appendChild(e);
 }
 function gt(t) {
@@ -87,7 +87,7 @@ function Mt(t) {
   return e.textContent = "/* empty */", Ct(gt(t), e), e.sheet;
 }
 function Ct(t, e) {
-  return U(
+  return F(
     /** @type {Document} */
     t.head || t,
     e
@@ -124,13 +124,13 @@ function st(t, e, n, i) {
 function E(t, e, n) {
   n == null ? t.removeAttribute(e) : t.getAttribute(e) !== n && t.setAttribute(e, n);
 }
-function Ut(t) {
+function Ft(t) {
   return Array.from(t.childNodes);
 }
 function A(t, e, n, i) {
   n == null ? t.style.removeProperty(e) : t.style.setProperty(e, n, i ? "important" : "");
 }
-function Ft(t, e, { bubbles: n = !1, cancelable: i = !1 } = {}) {
+function Ut(t, e, { bubbles: n = !1, cancelable: i = !1 } = {}) {
   return new CustomEvent(t, { detail: e, bubbles: n, cancelable: i });
 }
 class qt {
@@ -203,8 +203,8 @@ class qt {
     this.n.forEach(H);
   }
 }
-const x = /* @__PURE__ */ new Map();
-let V = 0;
+const V = /* @__PURE__ */ new Map();
+let x = 0;
 function Rt(t) {
   let e = 5381, n = t.length;
   for (; n--; )
@@ -213,7 +213,7 @@ function Rt(t) {
 }
 function zt(t, e) {
   const n = { stylesheet: Mt(e), rules: {} };
-  return x.set(t, n), n;
+  return V.set(t, n), n;
 }
 function wt(t, e, n, i, o, f, d, l = 0) {
   const r = 16.666 / i;
@@ -225,37 +225,37 @@ function wt(t, e, n, i, o, f, d, l = 0) {
 `;
   }
   const c = s + `100% {${d(n, 1 - n)}}
-}`, a = `__svelte_${Rt(c)}_${l}`, h = gt(t), { stylesheet: u, rules: m } = x.get(h) || zt(h, t);
+}`, a = `__svelte_${Rt(c)}_${l}`, h = gt(t), { stylesheet: u, rules: m } = V.get(h) || zt(h, t);
   m[a] || (m[a] = !0, u.insertRule(`@keyframes ${a} ${c}`, u.cssRules.length));
   const p = t.style.animation || "";
-  return t.style.animation = `${p ? `${p}, ` : ""}${a} ${i}ms linear ${o}ms 1 both`, V += 1, a;
+  return t.style.animation = `${p ? `${p}, ` : ""}${a} ${i}ms linear ${o}ms 1 both`, x += 1, a;
 }
 function K(t, e) {
   const n = (t.style.animation || "").split(", "), i = n.filter(
     e ? (f) => f.indexOf(e) < 0 : (f) => f.indexOf("__svelte") === -1
     // remove all Svelte animations
   ), o = n.length - i.length;
-  o && (t.style.animation = i.join(", "), V -= o, V || Dt());
+  o && (t.style.animation = i.join(", "), x -= o, x || Dt());
 }
 function Dt() {
   Z(() => {
-    V || (x.forEach((t) => {
+    x || (V.forEach((t) => {
       const { ownerNode: e } = t.stylesheet;
       e && H(e);
-    }), x.clear());
+    }), V.clear());
   });
 }
 let q;
-function F(t) {
+function U(t) {
   q = t;
 }
-function xt() {
+function Vt() {
   if (!q)
     throw new Error("Function called outside component initialization");
   return q;
 }
-function Vt(t) {
-  xt().$$.on_mount.push(t);
+function xt(t) {
+  Vt().$$.on_mount.push(t);
 }
 const P = [], B = [];
 let C = [];
@@ -277,12 +277,12 @@ function $t() {
     try {
       for (; T < P.length; ) {
         const e = P[T];
-        T++, F(e), Yt(e.$$);
+        T++, U(e), Yt(e.$$);
       }
     } catch (e) {
       throw P.length = 0, T = 0, e;
     }
-    for (F(null), P.length = 0, T = 0; B.length; )
+    for (U(null), P.length = 0, T = 0; B.length; )
       B.pop()();
     for (let e = 0; e < C.length; e += 1) {
       const n = C[e];
@@ -292,7 +292,7 @@ function $t() {
   } while (P.length);
   for (; ot.length; )
     ot.pop()();
-  Q = !1, J.clear(), F(t);
+  Q = !1, J.clear(), U(t);
 }
 function Yt(t) {
   if (t.fragment !== null) {
@@ -312,7 +312,7 @@ function Et() {
   })), L;
 }
 function I(t, e, n) {
-  t.dispatchEvent(Ft(`${e ? "intro" : "outro"}${n}`));
+  t.dispatchEvent(Ut(`${e ? "intro" : "outro"}${n}`));
 }
 const z = /* @__PURE__ */ new Set();
 let $;
@@ -438,7 +438,7 @@ function ee(t, e) {
 }
 function ne(t, e, n, i, o, f, d = null, l = [-1]) {
   const r = q;
-  F(t);
+  U(t);
   const s = t.$$ = {
     fragment: null,
     ctx: [],
@@ -467,13 +467,13 @@ function ne(t, e, n, i, o, f, d = null, l = [-1]) {
     return s.ctx && o(s.ctx[a], s.ctx[a] = m) && (!s.skip_bound && s.bound[a] && s.bound[a](m), c && ee(t, a)), h;
   }) : [], s.update(), c = !0, k(s.before_update), s.fragment = i ? i(s.ctx) : !1, e.target) {
     if (e.hydrate) {
-      const a = Ut(e.target);
+      const a = Ft(e.target);
       s.fragment && s.fragment.l(a), a.forEach(H);
     } else
       s.fragment && s.fragment.c();
     e.intro && W(t.$$.fragment), Zt(t, e.target, e.anchor), $t();
   }
-  F(r);
+  U(r);
 }
 class ie {
   constructor() {
@@ -644,7 +644,7 @@ function ut(t) {
       );
     },
     m(r, s) {
-      G(r, e, s), n.m(i, e), U(e, o), l = !0;
+      G(r, e, s), n.m(i, e), F(e, o), l = !0;
     },
     p(r, s) {
       t = r, (!l || s & /*animations*/
@@ -737,7 +737,7 @@ function ce(t) {
       );
     },
     m(c, a) {
-      G(c, e, a), U(e, n), U(n, i), t[8](i), U(n, f);
+      G(c, e, a), F(e, n), F(n, i), t[8](i), F(n, f);
       for (let h = 0; h < s.length; h += 1)
         s[h] && s[h].m(n, null);
       t[9](e), d || (l = [
@@ -799,7 +799,7 @@ function ue(t, e, n) {
       s.set(r.duration * _);
     });
   };
-  Vt(() => (r.readyState > 2 && c(), s.subscribe(async (m) => {
+  xt(() => (r.readyState > 2 && c(), s.subscribe(async (m) => {
     await r.play(), n(4, r.currentTime = m, r), r.pause();
   })));
   function a(u) {
@@ -837,5 +837,5 @@ class de extends ie {
   }
 }
 export {
-  de as Unstable3d
+  de as VideoScroller
 };

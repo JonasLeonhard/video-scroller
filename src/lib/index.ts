@@ -1,4 +1,4 @@
 // Reexport your entry components here
-import Unstable3d from './components/Unstable3d.svelte';
+import VideoScroller from './components/VideoScroller.svelte';
 
-export { Unstable3d };
+export { VideoScroller };

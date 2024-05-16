@@ -1,2 +1,2 @@
-import Unstable3d from './components/Unstable3d.svelte';
-export { Unstable3d };
+import VideoScroller from './components/VideoScroller.svelte';
+export { VideoScroller };

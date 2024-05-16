@@ -31,9 +31,9 @@ declare const __propDef: {
     };
     slots: {};
 };
-export type Unstable3dProps = typeof __propDef.props;
-export type Unstable3dEvents = typeof __propDef.events;
-export type Unstable3dSlots = typeof __propDef.slots;
-export default class Unstable3d extends SvelteComponent<Unstable3dProps, Unstable3dEvents, Unstable3dSlots> {
+export type VideoScrollerProps = typeof __propDef.props;
+export type VideoScrollerEvents = typeof __propDef.events;
+export type VideoScrollerSlots = typeof __propDef.slots;
+export default class VideoScroller extends SvelteComponent<VideoScrollerProps, VideoScrollerEvents, VideoScrollerSlots> {
 }
 export {};

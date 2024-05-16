@@ -1,6 +1,171 @@
-## Demo
-<a href="https://jonasleonhard.github.io/video-scroller/versions/0.0.1/dist-demo/">Demo - 0.0.1</a>
+# Video Scroller
+Smooth scroll based video scrolling usable as a Svelte Component or as a plain old Vanilla Js.
 
+## Demo
+<a href="https://jonasleonhard.github.io/video-scroller/versions/0.0.1/dist-demo/">Demo 0.0.1</a>
+
+## Integrating Svelte Component:
+
+```svelte
+<script lang="ts">
+	import { VideoScroller } from '$lib';
+
+	import '../app.css';
+</script>
+
+<div style="height: 800px"></div>
+
+<VideoScroller
+	animations={[
+		{
+			enter: {
+				time: 8.2,
+				transition: {
+					data: {
+						duration: 500,
+						y: -20
+					},
+					type: 'fly'
+				}
+			},
+			html: '<h1 class="my-headline">My Headline</h1>',
+			leave: {
+				time: 14.8,
+				transition: {
+					data: {
+						duration: 500,
+						y: 0
+					},
+					type: 'fly'
+				}
+			},
+			position: { x: '80%', y: '50%' }
+		},
+		{
+			enter: {
+				time: 3.2,
+				transition: {
+					data: {
+						duration: 500,
+						y: -20
+					},
+					type: 'fly'
+				}
+			},
+			html: '<h1 class="my-headline">Another Headline</h1>',
+			leave: {
+				time: 5,
+				transition: {
+					data: {
+						duration: 500,
+						y: 0
+					},
+					type: 'fly'
+				}
+			},
+			position: { x: '15%', y: '15%' }
+		}
+	]}
+	trackHeightPx={9600}
+	videoUrl="https://jonasleonhard.github.io/video-scroller/versions/0.0.1/dist-demo/scrollvideo.mp4"
+/>
+
+<div style="height: 800px"></div>
+
+<style>
+	// you have to style your html content yourself! the component comes with basically no styling out of the box.
+	:global(.my-headline) {
+		color: white;
+		font-size: 2rem;
+	}
+</style>
+```
+## Integrating Vanilla Javascript Component:
+```html
+<!doctype html>
+<html>
+	<head>
+		<title>Vanilla Html example</title>
+		<style>
+			.my-headline {
+				color: white;
+				font-size: 2rem;
+			}
+		</style>
+
+		<script type="module">
+			import { VideoScroller } from 'https://jonasleonhard.github.io/video-scroller/versions/0.0.1/dist-js/components.js'
+
+			new VideoScroller({
+				target: document.querySelector('#app'),
+				props: {
+					animations: {[
+						{
+							enter: {
+								time: 8.2,
+								transition: {
+									data: {
+										duration: 500,
+										y: -20
+									},
+									type: 'fly'
+								}
+							},
+							html: '<h1 class="my-headline">My Headline</h1>',
+							leave: {
+								time: 14.8,
+								transition: {
+									data: {
+										duration: 500,
+										y: 0
+									},
+									type: 'fly'
+								}
+							},
+							position: { x: '80%', y: '50%' }
+						},
+						{
+							enter: {
+								time: 3.2,
+								transition: {
+									data: {
+										duration: 500,
+										y: -20
+									},
+									type: 'fly'
+								}
+							},
+							html: '<h1 class="my-headline">Another Headline</h1>',
+							leave: {
+								time: 5,
+								transition: {
+									data: {
+										duration: 500,
+										y: 0
+									},
+									type: 'fly'
+								}
+							},
+							position: { x: '15%', y: '15%' }
+						}
+					]}
+					trackHeightPx: 9600
+					videoUrl: "https://jonasleonhard.github.io/video-scroller/versions/0.0.1/dist-demo/scrollvideo.mp4"
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<div id="app"></div>
+	</body>
+</html>
+```
+
+## Props
+todo...
+
+## Comparible Projects
+<a href="https://github.com/dkaoster/scrolly-video">Scrolly Video</a>
 
 ## Developing
 
@@ -45,34 +210,4 @@ To publish your library to [pnpm](https://www.pnpmjs.com):
 
 ```bash
 pnpm publish
-```
-
-## Integrating Svelte Component:
-
-TODO
-
-## Integrating dist:
-TODO
-
-## Integrating dist-js:
-TODO
-```html
-<!doctype html>
-<html>
-	<head>
-		<title>Vanilla Html example</title>
-		<script type="module">
-			import { Unstable3d } from './components.js';
-			new Unstable3d({
-				target: document.querySelector('#app'),
-				props: {
-					// initial property values
-				}
-			});
-		</script>
-	</head>
-	<body>
-		<div id="app"></div>
-	</body>
-</html>
 ```
