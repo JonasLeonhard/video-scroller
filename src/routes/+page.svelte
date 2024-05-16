@@ -58,7 +58,7 @@
 		}
 	]}
 	trackHeightPx={9600}
-	videoUrl="/scrollvideo.mp4"
+	videoUrl="https://jonasleonhard.github.io/video-scroller/versions/0.0.1/dist-demo/scrollvideo.mp4"
 />
 
 <div style="height: 800px"></div>
