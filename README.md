@@ -1,6 +1,10 @@
 # Video Scroller
 Smooth scroll based video scrolling usable as a Svelte Component or as a plain old Vanilla Js.
 
+
+https://github.com/JonasLeonhard/video-scroller/assets/54074887/3295360d-e5db-48b0-b2ca-fb6370ee65a1
+
+
 ## Demo
 <a href="https://jonasleonhard.github.io/video-scroller/versions/0.0.1/dist-demo/">Demo 0.0.1</a>
 
