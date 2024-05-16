@@ -4,6 +4,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && pnpm run package && pnpm run packageJs",
+		"buildToVersion": "bash version.bash",
 		"preview": "vite preview",
 		"package": "svelte-kit sync && svelte-package && publint",
 		"packageJs": "vite -c vite.js.config.js build",

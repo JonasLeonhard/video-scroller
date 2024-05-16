@@ -1,5 +1,5 @@
 ## Demo
-<a href="https://jonasleonhard.github.io/video-scroller/versions/0.0.1/dist-demo/">Demo</a>
+<a href="https://jonasleonhard.github.io/video-scroller/versions/0.0.1/dist-demo/">Demo - 0.0.1</a>
 
 
 ## Developing
@@ -24,9 +24,16 @@ pnpm run build
 ```
 
 -> This outputs the following directories:
-1. .svelte-kit -> The Showcase app
+1. dist-demo -> The Showcase app
 2. dist -> The svelte component
 3. dist-js -> A Vanilla js component
+
+If you want to update the versions folder run
+
+```bash
+pnpm run buildToVersion
+```
+This will ask you for a version number to put in the versions folder, and put the output dirs there for github pages.
 
 You can preview the production build with `pnpm run preview`.
 
